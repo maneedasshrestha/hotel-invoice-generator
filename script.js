@@ -1,80 +1,59 @@
-// Selecting necessary elements
-const addItemButton = document.getElementById('add-item-btn');
-const itemRowsContainer = document.getElementById('item-rows');
+const tBody = document.getElementById("table-body");
 
-// Function to add a new item row
-function addItemRow() {
-  // Create a new div with class 'item-row'
-  const newItemRow = document.createElement('div');
-  newItemRow.classList.add('item-row');
+addNewRow =()=> {
+    const row = document.createElement("tr");
+    row.className = "single-row";
+    row.innerHTML = `<td><input type="text" placeholder="Product name" class="product" id="product"></td>
+                    <td><input type="number" placeholder="0" name="unit" class="unit" id="unit" onkeyup="getInput()"></td>
+                    <td><input type="number" placeholder="0" name="price" class="price" id="price" onkeyup="getInput()"></td>
+                    <td><input type="number" placeholder="0" name="amount" class="amount" id="amount" disabled></td>
+                    <td style="text-align: right;"><span class="material-icons" action="delete">delete_outline</span></td>`
 
-  // Create input fields for item, quantity, rate, and amount
-  const itemNameInput = document.createElement('input');
-  itemNameInput.type = 'text';
-  itemNameInput.classList.add('item-name');
-  itemNameInput.placeholder = 'Enter item';
-
-  const itemQuantityInput = document.createElement('input');
-  itemQuantityInput.type = 'number';
-  itemQuantityInput.classList.add('item-quantity');
-  itemQuantityInput.placeholder = 'Quantity';
-
-  const itemRateInput = document.createElement('input');
-  itemRateInput.type = 'number';
-  itemRateInput.classList.add('item-rate');
-  itemRateInput.placeholder = 'Rate';
-
-  const itemAmountInput = document.createElement('input');
-  itemAmountInput.type = 'number';
-  itemAmountInput.classList.add('item-amount');
-  itemAmountInput.placeholder = 'Amount';
-  itemAmountInput.readOnly = true;
-
-  // Append all inputs to the new item row
-  newItemRow.appendChild(itemNameInput);
-  newItemRow.appendChild(itemQuantityInput);
-  newItemRow.appendChild(itemRateInput);
-  newItemRow.appendChild(itemAmountInput);
-
-  // Append the new row to the container
-  itemRowsContainer.appendChild(newItemRow);
-
-  // Add event listeners to calculate the amount when quantity or rate is changed
-  itemQuantityInput.addEventListener('input', calculateAmount);
-  itemRateInput.addEventListener('input', calculateAmount);
-
-  // Function to calculate the amount for the row
-  function calculateAmount() {
-    const quantity = parseFloat(itemQuantityInput.value) || 0;
-    const rate = parseFloat(itemRateInput.value) || 0;
-    const amount = quantity * rate;
-    itemAmountInput.value = amount.toFixed(2); // Set the calculated amount
-    updateTotals(); // Update total after amount change
-  }
+    tBody.insertBefore(row, tBody.lastElementChild.previousSibling);
 }
 
-// Function to update totals, payment made, and balance due
-function updateTotals() {
-  const allAmountInputs = document.querySelectorAll('.item-amount');
-  let totalAmount = 0;
+document.getElementById("add-row").addEventListener("click", (e)=> {
+    e.preventDefault();
+    addNewRow();
+});
 
-  allAmountInputs.forEach(input => {
-    totalAmount += parseFloat(input.value) || 0;
-  });
+//GET INPUTS, MULTIPLY AND GET THE ITEM PRICE
+getInput =()=> {
+    var rows = document.querySelectorAll("tr.single-row");
+    rows.forEach((currentRow) => {
+        var unit = currentRow.querySelector("#unit").value;
+        var price = currentRow.querySelector("#price").value;
 
-  const totalAmountField = document.getElementById('total-amount');
-  totalAmountField.value = totalAmount.toFixed(2);
+        amount = unit * price;
+        currentRow.querySelector("#amount").value = amount;
+        overallSum();
 
-  const paymentMadeField = document.getElementById('payment-made');
-  const paymentMade = parseFloat(paymentMadeField.value) || 0;
+    })
+};
 
-  const balanceDueField = document.getElementById('balance-due');
-  balanceDueField.value = (totalAmount - paymentMade).toFixed(2);
+//Get the overall sum/Total
+overallSum =()=> {
+    var arr = document.getElementsByName("amount");
+    var total = 0;
+    for(var i = 0; i < arr.length; i++) {
+        if(arr[i].value) {
+            total += +arr[i].value;
+        }
+        document.getElementById("total").value = total;
+    }
 }
 
-// Add event listener to the Add Item button
-addItemButton.addEventListener('click', addItemRow);
+//Delete row from the table
+tBody.addEventListener("click", (e)=>{
+    let el = e.target;
+    const deleteROW = e.target.getAttribute("action");
+    if(deleteROW == "delete") {
+        delRow(el);
+        overallSum();
+    }
+})
 
-// Add event listener to payment made field to update balance due
-const paymentMadeField = document.getElementById('payment-made');
-paymentMadeField.addEventListener('input', updateTotals);
+//Target row and remove from DOM;
+delRow =(el)=> {
+    el.parentNode.parentNode.parentNode.removeChild(el.parentNode.parentNode);
+}

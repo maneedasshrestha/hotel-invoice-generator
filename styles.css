@@ -1,207 +1,224 @@
-/* Base styles */
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f7f6;
+* {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+}
+
+body {
+  font-family: roboto;
+  background: white;
+}
+
+.material-icons {
+  cursor: pointer;
 }
 
 .invoice-container {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
-  width: 100%;
+  margin: auto;
+  padding: 0px 20px;
 }
 
 .invoice-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  padding: 70px 0%;
+  width: 100%;
 }
 
-.logo-container {
+.title {
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: rgb(66, 66, 66);
+}
+
+.date {
+  padding: 5px 0px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: rgb(156, 156, 156);
+}
+
+.invoice-number {
+  font-size: 17px;
+  letter-spacing: 2px;
+  color: rgb(156, 156, 156);
+}
+
+.space {
+  width: 50%;
+}
+
+table {
+  table-layout: auto;
+  width: 100%;
+}
+table,
+th,
+td {
+  border-collapse: collapse;
+}
+
+th {
+  padding: 10px 0px;
+  border-bottom: 1px solid rgb(187, 187, 187);
+  border-bottom-style: dashed;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: gray;
   text-align: left;
 }
 
-#hotel-logo {
-  width: 120px;
-  height: auto;
+td {
+  padding: 10px 0px;
+  border-bottom: 0.5px solid rgb(226, 226, 226);
+  text-align: left;
 }
 
-.hotel-name {
-  font-size: 14px;
-  color: #555;
-  margin-top: 5px;
+.dashed {
+  border-bottom: 1px solid rgb(187, 187, 187);
+  border-bottom-style: dashed;
 }
 
-h1 {
-  color: #388e3c;
-  font-size: 24px;
+.total {
+  font-weight: 800;
+  font-size: 20px !important;
+  color: black;
 }
 
-form {
-  width: 100%;
-}
-
-/* Styles for headers */
-.item-header-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #388e3c;
-}
-
-.item-header {
-  flex: 1;
+input[type="number"] {
   text-align: center;
-  padding: 5px; /* Add some padding for better alignment */
-}
-
-/* Input field styles */
-.item-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #dcdcdc;
-  padding-bottom: 10px;
-  flex-wrap: wrap;
-}
-
-.item-name, .item-quantity, .item-rate, .item-amount {
+  max-width: 50px;
+  font-size: 15px;
   padding: 10px;
-  border: 1px solid #dcdcdc;
-  border-radius: 5px;
-  flex: 1;
-  min-width: 100px;
-}
-
-.item-name {
-  flex: 2;
-}
-
-.item-amount {
-  text-align: right;
-}
-
-/* Add button styles */
-#add-item-btn {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #388e3c;
-  color: white;
   border: none;
+  outline: none;
+}
+
+input[type="text"] {
+  max-width: 170px;
+  text-align: left;
+  font-size: 15px;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+input[type="text"]:focus {
   border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px;
+  background: #ffffff;
+  box-shadow: 11px 11px 22px #d9d9d9, -11px -11px 22px #ffffff;
 }
 
-#add-item-btn:hover {
-  background-color: #2e7d32;
+input[type="number"]:focus {
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 11px 11px 22px #d9d9d9, -11px -11px 22px #ffffff;
 }
 
-/* Total section styles */
-.totals {
-  background-color: #e8f5e9;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
-.total-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+.float {
+  width: 40px;
+  height: 40px;
+  background-color: #ff1d89;
+  color: #fff;
+  border-radius: 100%;
+  text-align: center;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.048),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.069), 0 12.5px 10px rgba(0, 0, 0, 0.085),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.101), 0 41.8px 33.4px rgba(0, 0, 0, 0.122),
+    0 100px 80px rgba(0, 0, 0, 0.17);
 }
 
-.total-row label {
+.float:hover {
+  background-color: #ff057e;
+}
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 800px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
   font-weight: bold;
-}
-
-#total-amount, #payment-made, #balance-due {
-  border: none;
-  background-color: #e8f5e9;
-  padding: 5px;
-  text-align: right;
-}
-
-/* Button styles */
-.btn {
-  background-color: #388e3c;
-  color: white;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  border-radius: 5px;
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: #2e7d32;
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .invoice-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  #hotel-logo {
-    width: 100px;
-    margin-bottom: 10px;
-  }
-
-  .hotel-name {
-    font-size: 12px;
-  }
-
-  .item-row {
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .item-name, .item-quantity, .item-rate, .item-amount {
-    width: 100%;
-  }
-
-  #add-item-btn {
-    font-size: 14px;
-  }
+.plus {
+  margin-top: 10px;
 }
 
-@media (max-width: 480px) {
+#sum {
+  text-align: right;
+  width: 100%;
+}
+
+#sum input[type="text"] {
+  width: 100%;
+  font-size: 33px !important;
+  color: black;
+  text-align: right !important;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  body {
+    background: lemonchiffon;
+  }
   .invoice-container {
-    padding: 10px;
+    border: solid 1px gray;
+    width: 600px; /* Fixed width for consistent rendering */
+    margin: 50px auto;
+    padding: 50px; /* Maintain space within the border */
+    padding-bottom: 100px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      0 100px 80px rgba(0, 0, 0, 0.07);
   }
 
-  h1 {
-    font-size: 20px;
+  .title-date {
+    width: 20%;
   }
-
-  #hotel-logo {
-    width: 80px;
+  .invoice-number {
+    width: 20%;
   }
-
-  .item-name, .item-quantity, .item-rate, .item-amount {
-    padding: 8px;
-  }
-
-  #add-item-btn {
-    padding: 8px;
-  }
-
-  .btn {
-    padding: 8px;
+  .space {
+    width: 80%;
   }
 }
