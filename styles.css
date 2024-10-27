@@ -1,0 +1,207 @@
+/* Base styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7f6;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.invoice-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 100%;
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-container {
+  text-align: left;
+}
+
+#hotel-logo {
+  width: 120px;
+  height: auto;
+}
+
+.hotel-name {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+h1 {
+  color: #388e3c;
+  font-size: 24px;
+}
+
+form {
+  width: 100%;
+}
+
+/* Styles for headers */
+.item-header-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #388e3c;
+}
+
+.item-header {
+  flex: 1;
+  text-align: center;
+  padding: 5px; /* Add some padding for better alignment */
+}
+
+/* Input field styles */
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #dcdcdc;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.item-name, .item-quantity, .item-rate, .item-amount {
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  flex: 1;
+  min-width: 100px;
+}
+
+.item-name {
+  flex: 2;
+}
+
+.item-amount {
+  text-align: right;
+}
+
+/* Add button styles */
+#add-item-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#add-item-btn:hover {
+  background-color: #2e7d32;
+}
+
+/* Total section styles */
+.totals {
+  background-color: #e8f5e9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.total-row label {
+  font-weight: bold;
+}
+
+#total-amount, #payment-made, #balance-due {
+  border: none;
+  background-color: #e8f5e9;
+  padding: 5px;
+  text-align: right;
+}
+
+/* Button styles */
+.btn {
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #2e7d32;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .invoice-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #hotel-logo {
+    width: 100px;
+    margin-bottom: 10px;
+  }
+
+  .hotel-name {
+    font-size: 12px;
+  }
+
+  .item-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .item-name, .item-quantity, .item-rate, .item-amount {
+    width: 100%;
+  }
+
+  #add-item-btn {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .invoice-container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  #hotel-logo {
+    width: 80px;
+  }
+
+  .item-name, .item-quantity, .item-rate, .item-amount {
+    padding: 8px;
+  }
+
+  #add-item-btn {
+    padding: 8px;
+  }
+
+  .btn {
+    padding: 8px;
+  }
+}

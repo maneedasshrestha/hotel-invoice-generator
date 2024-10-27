@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Invoice Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="invoice-container">
+    <div class="invoice-header">
+      <div class="logo-container">
+        <img src="hotel-logo.png" alt="Hotel Logo" id="hotel-logo">
+        <div class="hotel-name">Hotel Mount Paradise, Windy Hill</div>
+      </div>
+      <h1>Invoice</h1>
+    </div>
+
+    <form id="invoice-form">
+      <!-- Input field headers -->
+      <div class="item-header-row">
+        <label class="item-header">Item</label>
+        <label class="item-header">Quantity</label>
+        <label class="item-header">Rate</label>
+        <label class="item-header">Amount</label>
+      </div>
+
+      <!-- Input fields for items -->
+      <div id="item-rows">
+        <div class="item-row">
+          <input type="text" class="item-name" placeholder="Enter item">
+          <input type="number" class="item-quantity" placeholder="Quantity">
+          <input type="number" class="item-rate" placeholder="Rate">
+          <input type="number" class="item-amount" placeholder="Amount" readonly>
+        </div>
+      </div>
+
+      <!-- Button to add more items -->
+      <button type="button" id="add-item-btn">Add Item</button>
+
+      <!-- Total, Payment, and Balance Section -->
+      <div class="totals">
+        <div class="total-row">
+          <label>Total Amount</label>
+          <input type="number" id="total-amount" readonly>
+        </div>
+        <div class="total-row">
+          <label>Payment Made</label>
+          <input type="number" id="payment-made" placeholder="Enter amount paid">
+        </div>
+        <div class="total-row">
+          <label>Balance Due</label>
+          <input type="number" id="balance-due" readonly>
+        </div>
+      </div>
+
+      <!-- Button to generate PDF -->
+      <button type="button" class="btn" id="generate-pdf-btn">Generate PDF</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
